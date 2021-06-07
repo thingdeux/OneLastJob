@@ -11,7 +11,7 @@ import SwiftUI
 struct OneLastJobApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            JobSelectionView()
         }
     }
 }

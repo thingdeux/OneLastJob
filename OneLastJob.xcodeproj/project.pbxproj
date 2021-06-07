@@ -8,19 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		494B6306266DCF3800650E35 /* OneLastJobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B6305266DCF3800650E35 /* OneLastJobApp.swift */; };
-		494B6308266DCF3800650E35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B6307266DCF3800650E35 /* ContentView.swift */; };
+		494B6308266DCF3800650E35 /* RoulletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B6307266DCF3800650E35 /* RoulletteView.swift */; };
 		494B630A266DCF3900650E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494B6309266DCF3900650E35 /* Assets.xcassets */; };
 		494B630D266DCF3900650E35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494B630C266DCF3900650E35 /* Preview Assets.xcassets */; };
+		494B6316266DD17500650E35 /* JobSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B6315266DD17500650E35 /* JobSelectionView.swift */; };
+		494B6318266DD90700650E35 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B6317266DD90700650E35 /* Locations.swift */; };
+		494B631B266DD91C00650E35 /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B631A266DD91C00650E35 /* Venues.swift */; };
+		494B631D266DD92600650E35 /* Things.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B631C266DD92600650E35 /* Things.swift */; };
+		494B631F266DD93200650E35 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B631E266DD93200650E35 /* Times.swift */; };
+		494B6321266DEB2A00650E35 /* RoulletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B6320266DEB2A00650E35 /* RoulletteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		494B6302266DCF3800650E35 /* OneLastJob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneLastJob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		494B6305266DCF3800650E35 /* OneLastJobApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLastJobApp.swift; sourceTree = "<group>"; };
-		494B6307266DCF3800650E35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		494B6307266DCF3800650E35 /* RoulletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulletteView.swift; sourceTree = "<group>"; };
 		494B6309266DCF3900650E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		494B630C266DCF3900650E35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		494B630E266DCF3900650E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		494B630F266DCF3900650E35 /* OneLastJob.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneLastJob.entitlements; sourceTree = "<group>"; };
+		494B6315266DD17500650E35 /* JobSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSelectionView.swift; sourceTree = "<group>"; };
+		494B6317266DD90700650E35 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		494B631A266DD91C00650E35 /* Venues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
+		494B631C266DD92600650E35 /* Things.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Things.swift; sourceTree = "<group>"; };
+		494B631E266DD93200650E35 /* Times.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Times.swift; sourceTree = "<group>"; };
+		494B6320266DEB2A00650E35 /* RoulletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulletteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +65,11 @@
 		494B6304266DCF3800650E35 /* OneLastJob */ = {
 			isa = PBXGroup;
 			children = (
+				494B6319266DD90C00650E35 /* Data */,
+				494B6315266DD17500650E35 /* JobSelectionView.swift */,
 				494B6305266DCF3800650E35 /* OneLastJobApp.swift */,
-				494B6307266DCF3800650E35 /* ContentView.swift */,
+				494B6307266DCF3800650E35 /* RoulletteView.swift */,
+				494B6320266DEB2A00650E35 /* RoulletteViewModel.swift */,
 				494B6309266DCF3900650E35 /* Assets.xcassets */,
 				494B630E266DCF3900650E35 /* Info.plist */,
 				494B630F266DCF3900650E35 /* OneLastJob.entitlements */,
@@ -69,6 +84,17 @@
 				494B630C266DCF3900650E35 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		494B6319266DD90C00650E35 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				494B6317266DD90700650E35 /* Locations.swift */,
+				494B631A266DD91C00650E35 /* Venues.swift */,
+				494B631C266DD92600650E35 /* Things.swift */,
+				494B631E266DD93200650E35 /* Times.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				494B6308266DCF3800650E35 /* ContentView.swift in Sources */,
+				494B631F266DD93200650E35 /* Times.swift in Sources */,
+				494B6308266DCF3800650E35 /* RoulletteView.swift in Sources */,
 				494B6306266DCF3800650E35 /* OneLastJobApp.swift in Sources */,
+				494B6318266DD90700650E35 /* Locations.swift in Sources */,
+				494B631B266DD91C00650E35 /* Venues.swift in Sources */,
+				494B631D266DD92600650E35 /* Things.swift in Sources */,
+				494B6316266DD17500650E35 /* JobSelectionView.swift in Sources */,
+				494B6321266DEB2A00650E35 /* RoulletteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +312,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.versussystems.OneLastJob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -304,7 +336,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.versussystems.OneLastJob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

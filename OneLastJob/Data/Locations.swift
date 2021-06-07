@@ -21,7 +21,7 @@ private enum Constants {
     static let LondonEnglandLocation = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507351, longitude: -0.127758),
                                                           span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
 
-    static let MoscowRussiaLocation = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: 37.617298),
+    static let MoscowRussiaLocation = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 55.752221172303365, longitude: 37.617748231375536),
                                                          span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
 
     static let HongKongChinaLocation = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.396427, longitude: 114.109497),

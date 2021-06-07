@@ -10,6 +10,8 @@ import Combine
 import SwiftUI
 import MapKit
 
+let startRoulleteShuffle = Notification.Name(rawValue: "StartReshuffle")
+
 class RoulletteViewModel: ObservableObject  {
     @Published private(set) var title: String
     @Published private(set) var textColor = Color.white
@@ -20,6 +22,11 @@ class RoulletteViewModel: ObservableObject  {
     private(set) var dataset: [RoulletteView.Data] = []
     private(set) var resolveTime: Double = 5
     private var animationTimeElapsed: TimeInterval = 0
+    private var processedFinal = false
+
+    // Combine subscribers
+    private var animationTimer: AnyCancellable?
+    private var shuffleAllReceiver: AnyCancellable?
 
     private enum Constants {
         static let defaultRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
@@ -36,10 +43,24 @@ class RoulletteViewModel: ObservableObject  {
             self.dataset.append(contentsOf: dataset.shuffled())
         }
         resolveTime = timeToResolveInSeconds
+        shuffleAllReceiver = NotificationCenter.default
+            .publisher(for: startRoulleteShuffle)
+            .sink(receiveValue: { [weak self] _ in
+                self?.startRoullette()
+                self?.processedFinal = true
+            })
     }
 
-    private var animationTimer: AnyCancellable?
+    deinit {
+        self.animationTimer?.cancel()
+        self.shuffleAllReceiver?.cancel()
+        self.animationTimer = nil
+        self.shuffleAllReceiver = nil
+    }
+
     func startRoullette() {
+        guard processedFinal == false else { return }
+
         let isLocationView: Bool = self.dataset.first?.type == .location
         self.animationTimeElapsed = 0
         self.textColor = Color.white

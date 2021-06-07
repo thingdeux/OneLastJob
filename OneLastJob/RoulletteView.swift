@@ -24,9 +24,9 @@ struct RoulletteView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Text(viewModel.title)
-                .fontWeight(.semibold)
-                .font(.system(size: 60))
+            Text(viewModel.title.uppercased())
+                .fontWeight(.bold)
+                .font(.system(size: 50))
 
             Text(viewModel.value.text)
                 .foregroundColor(viewModel.textColor)
@@ -36,7 +36,8 @@ struct RoulletteView: View {
                 .padding([.bottom], shouldShowMap ? 15 : 0)
 
             ZStack {
-                Color.white.opacity(shouldShowMap ? 1 : 0)
+                viewModel.textColor
+                    .opacity(shouldShowMap ? 0.5 : 0)
                 Map(coordinateRegion: $viewModel.region)
                     .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
                     .padding(4)

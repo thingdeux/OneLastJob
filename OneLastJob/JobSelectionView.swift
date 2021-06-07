@@ -30,7 +30,7 @@ struct JobSelectionView: View {
                     .padding(.bottom, 40)
                     .onTapGesture {
                         startedFinalDraw = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                             // Allow for views to be recreated and resubscribe to listen.
                             NotificationCenter.default.post(name: startRoulleteShuffle, object: self)
                         }

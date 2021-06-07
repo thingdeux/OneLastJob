@@ -69,6 +69,14 @@ extension String {
     }
 }
 
+extension Array where Element == String {
+    func asRoulletteData() -> [RoulletteView.Data] {
+        return self.compactMap { string in
+            RoulletteView.Data(text: string)
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         RoulletteView(title: "Location")

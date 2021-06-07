@@ -73,7 +73,7 @@ class RoulletteViewModel: ObservableObject  {
             .sink() { [weak self]_ in
                 guard let self = self else { return }
                 guard self.animationTimeElapsed < self.resolveTime else {                    
-                    self.textColor = Color.green
+                    self.textColor = self.processedFinal ? Color.green : Color.red
                     self.currentlyResolving = false
                     self.animationTimer?.cancel()
                     return

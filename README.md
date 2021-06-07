@@ -4,4 +4,4 @@ Randomly selects from a pre determined list of fake heist movie data.
 
 Written in Swift / SwiftUI
 
-![Image of the App](https://github.com/thingdeux/OneLastJob/Static/yaktocat.png)
+![Image of the App](https://github.com/thingdeux/OneLastJob/raw/main/Static/Example.png)

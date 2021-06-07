@@ -8,9 +8,12 @@
 import Foundation
 
 let timeOfDayDataset = [
-    "Dawn", "Noon", "Afternoon", "Evening", "Nighttime"
+    "Dawn".asRoulletteData(), "Noon".asRoulletteData(),
+    "Afternoon".asRoulletteData(), "Evening".asRoulletteData(), "Nighttime".asRoulletteData()
 ]
 
 let timeLimitDataset = [
-    "6 Hours", "12 Hours", "1 Day", "1 Week", "1 Month", "24 Hours"
+    "6 Hours".asRoulletteData(), "12 Hours".asRoulletteData(),
+    "1 Day".asRoulletteData(), "1 Week".asRoulletteData(), "1 Month".asRoulletteData(),
+    "24 Hours".asRoulletteData()
 ]

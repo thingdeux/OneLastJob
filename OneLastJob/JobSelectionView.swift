@@ -9,19 +9,11 @@ import SwiftUI
 import MapKit
 
 struct JobSelectionView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
+            VStack(spacing: 15) {
                 RoulletteView(title: "Location", dataset: locationsDataSet, timeToResolveInSeconds: 10)
-                    .padding(.top, 40)
-
-                Map(coordinateRegion: $region)
-                    .frame(width: 500, height: 400)
-                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-                    .padding()
-
+                    .padding(.top, 90)
 
                 RoulletteView(title: "Venue", dataset: venuesDataSet, timeToResolveInSeconds: 20)
                 RoulletteView(title: "Thing", dataset: thingDataSet, timeToResolveInSeconds: 45)

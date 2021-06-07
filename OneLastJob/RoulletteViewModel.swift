@@ -8,18 +8,26 @@
 import Foundation
 import Combine
 import SwiftUI
+import MapKit
 
 class RoulletteViewModel: ObservableObject  {
     @Published private(set) var title: String
     @Published private(set) var textColor = Color.white
     @Published private(set) var currentlyResolving = false
-    @Published private(set) var value: String = "  - -  "
-    private(set) var dataset: [String] = []
+    @Published private(set) var value: RoulletteView.Data = RoulletteView.Data(text: "  - -  ")
+    @Published var region = Constants.defaultRegion
+
+    private(set) var dataset: [RoulletteView.Data] = []
     private(set) var resolveTime: Double = 5
     private var animationTimeElapsed: TimeInterval = 0
 
+    private enum Constants {
+        static let defaultRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+                                                      span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    }
+
     init(title: String,
-         dataset: [String] = [],
+         dataset: [RoulletteView.Data] = [],
          timeToResolveInSeconds: Double = 5) {
 
         self.title = title
@@ -32,9 +40,10 @@ class RoulletteViewModel: ObservableObject  {
 
     private var animationTimer: AnyCancellable?
     func startRoullette() {
+        let isLocationView: Bool = self.dataset.first?.type == .location
         self.animationTimeElapsed = 0
         self.textColor = Color.white
-        let animationSpeed: TimeInterval = 0.10
+        let animationSpeed: TimeInterval = isLocationView ? 0.80 : 0.10
         currentlyResolving = true
 
         animationTimer =
@@ -49,15 +58,25 @@ class RoulletteViewModel: ObservableObject  {
                     return
                 }
 
-                self.animationTimeElapsed += animationSpeed
+                let data = self.dataset.randomElement() ?? RoulletteView.Data(text: "")
 
+                self.animationTimeElapsed += animationSpeed
                 // I want each change to linger a bit
                 withAnimation(.easeOut(duration: animationSpeed - 0.25)) {
-                    self.value = "     "
+                    self.value = RoulletteView.Data(text: "     ",
+                                                    type: data.type,
+                                                    associatedLocation: data.associatedLocation)
                 }
 
-                withAnimation(.easeIn(duration: animationSpeed - 0.5)) {
-                    self.value = self.dataset.randomElement() ?? ""
+                if (!isLocationView) {
+                    withAnimation(.easeIn(duration: animationSpeed - 0.5)) { self.value = data }
+                } else {
+                    DispatchQueue.main.async {
+                        self.region = data.associatedLocation ?? Constants.defaultRegion
+                        withAnimation(.easeIn(duration: animationSpeed - 0.5)) {
+                            self.value = data
+                        }
+                    }
                 }
             }
     }

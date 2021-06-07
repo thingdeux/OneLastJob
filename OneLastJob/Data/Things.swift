@@ -7,29 +7,29 @@
 
 import Foundation
 
-let thingDataSet = [
-    "Formula 1 Car",
-    "Next Unreleased iPhone",
-    "1000 Graphics Cards",
-    "NFT of DJT worth $200 Million",
-    "Priceless NFT of Dwayne Johnson",
-    "The cure for COVID-19",
-    "Unreleased Tupac CD",
-    "Location of Tupacs' Island",
-    "Location of Elvis' Island",
-    "Location of Biggie Smalls' Island",
-    "Proof of Aliens' existence",
-    "Proof of OJ's innocence",
-    "Proof of OJ's guilt",
-    "Proof of MJ's innocence",
-    "Proof of MJ's guilt",
-    "Proof Benedict Cumberpatch is an alien",
-    "Proof that we live in the Matrix",
-    "Ticket to a weekend getaway with T. Swizzle",
-    "Source code to iPhone OS",
-    "Source code to MacOS",
-    "Finished books of Game of Thrones",
-    "Secret to the meaning of life",
-    "Cure for balding"
+let thingDataSet: [RoulletteView.Data] = [
+    "Formula 1 Car".asRoulletteData(),
+    "Next Unreleased iPhone".asRoulletteData(),
+    "1000 Graphics Cards".asRoulletteData(),
+    "NFT of DJT worth $200 Million".asRoulletteData(),
+    "Priceless NFT of Dwayne Johnson".asRoulletteData(),
+    "The cure for COVID-19".asRoulletteData(),
+    "The cure for balding".asRoulletteData(),
+    "Unreleased Tupac CD".asRoulletteData(),
+    "GPS to Tupacs' Island #StillAlive".asRoulletteData(),
+    "Proof of Aliens' existence".asRoulletteData(),
+    "Proof of OJ's innocence".asRoulletteData(),
+    "Proof of OJ's guilt".asRoulletteData(),
+    "Proof of MJ's innocence".asRoulletteData(),
+    "Proof of MJ's guilt".asRoulletteData(),
+    "Proof Benedict Cumberpatch is an alien".asRoulletteData(),
+    "Proof that we live in the Matrix".asRoulletteData(),
+    "A weekend getaway with T. Swizzle".asRoulletteData(),
+    "A weekend getaway with Jay-Z and Beyoncé".asRoulletteData(),
+    "Source code to iPhone OS".asRoulletteData(),
+    "Source code to MacOS".asRoulletteData(),
+    "Finished books for Game of Thrones".asRoulletteData(),
+    "Secret to the meaning of life".asRoulletteData(),
+    "Chef Gordon Ramsays' secret recipes".asRoulletteData()
 
 ]

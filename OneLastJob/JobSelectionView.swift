@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-var startedFinalDraw = false
+private var startedFinalDraw = false
 
 struct JobSelectionView: View {
 

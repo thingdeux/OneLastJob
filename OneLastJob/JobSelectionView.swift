@@ -34,8 +34,8 @@ struct JobSelectionView: View {
                     .frame(width: 115, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 30))
-                    .padding(.bottom, 40)
-                    .padding(.top, 20)
+                    .padding(.top, 40)
+                    .offset(y: 30)
                     .opacity(startedFinalDraw ? 0.5 : 1)
                     .onTapGesture {
                         startedFinalDraw = true

@@ -16,20 +16,23 @@ class RoulletteViewModel: ObservableObject  {
     @Published private(set) var title: String
     @Published private(set) var textColor = Color.white
     @Published private(set) var currentlyResolving = false
-    @Published private(set) var value: RoulletteView.Data = RoulletteView.Data(text: "  - -  ")
+    @Published private(set) var value: RoulletteView.Data = RoulletteView.Data(text: "  - -  ")    
     @Published var region = Constants.defaultRegion
 
     private(set) var dataset: [RoulletteView.Data] = []
     private(set) var resolveTime: Double = 5
     private var animationTimeElapsed: TimeInterval = 0
     private var processedFinal = false
+    var isLocationView: Bool {
+        self.dataset.first?.type == .location
+    }
 
     // Combine subscribers
     private var animationTimer: AnyCancellable?
     private var shuffleAllReceiver: AnyCancellable?
 
     private enum Constants {
-        static let defaultRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+        static let defaultRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 33.875458830596415, longitude: -117.56656811490122),
                                                       span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     }
 
@@ -43,6 +46,8 @@ class RoulletteViewModel: ObservableObject  {
             self.dataset.append(contentsOf: dataset.shuffled())
         }
         resolveTime = timeToResolveInSeconds
+        if (isLocationView) { self.value = RoulletteView.Data(text: "  - -  ", type: .location, associatedLocation: Constants.defaultRegion)}
+
         shuffleAllReceiver = NotificationCenter.default
             .publisher(for: startRoulleteShuffle)
             .sink(receiveValue: { [weak self] _ in
@@ -61,7 +66,6 @@ class RoulletteViewModel: ObservableObject  {
     func startRoullette() {
         guard processedFinal == false else { return }
 
-        let isLocationView: Bool = self.dataset.first?.type == .location
         self.animationTimeElapsed = 0
         self.textColor = Color.white
         let animationSpeed: TimeInterval = isLocationView ? 0.80 : 0.10
@@ -89,7 +93,7 @@ class RoulletteViewModel: ObservableObject  {
                                                     associatedLocation: data.associatedLocation)
                 }
 
-                if (!isLocationView) {
+                if (!self.isLocationView) {
                     withAnimation(.easeIn(duration: animationSpeed - 0.5)) { self.value = data }
                 } else {
                     DispatchQueue.main.async {

@@ -12,15 +12,22 @@ struct JobSelectionView: View {
     @State private var startedFinalDraw = false
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                RoulletteView(title: "Location", dataset: locationsDataSet, timeToResolveInSeconds: startedFinalDraw ? 30 : 10)
-                    .padding(.top, 40)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 0) {
+                HStack(spacing: 10) {
+                    RoulletteView(title: "Location", dataset: locationsDataSet, timeToResolveInSeconds: startedFinalDraw ? 30 : 10)
+                        .frame(width: mainViewWidth * 0.40)
+                        .offset(y: 26)
 
-                RoulletteView(title: "Venue", dataset: venuesDataSet, timeToResolveInSeconds: startedFinalDraw ? 32 : 9)
-                RoulletteView(title: "Thing", dataset: thingDataSet, timeToResolveInSeconds: startedFinalDraw ? 36 : 4)
-                RoulletteView(title: "Time Limit", dataset: timeLimitDataset, timeToResolveInSeconds: startedFinalDraw ? 12 : 7)
-                RoulletteView(title: "Time of Day", dataset: timeOfDayDataset, timeToResolveInSeconds: startedFinalDraw ? 12 : 8)
+                    VStack {
+                        RoulletteView(title: "Venue", dataset: venuesDataSet, timeToResolveInSeconds: startedFinalDraw ? 32 : 9)
+                        RoulletteView(title: "Thing", dataset: thingDataSet, timeToResolveInSeconds: startedFinalDraw ? 36 : 4)
+                        RoulletteView(title: "Time Limit", dataset: timeLimitDataset, timeToResolveInSeconds: startedFinalDraw ? 12 : 7)
+                        RoulletteView(title: "Time of Day", dataset: timeOfDayDataset, timeToResolveInSeconds: startedFinalDraw ? 12 : 8)
+                    }
+                    .frame(width: mainViewWidth * 0.45)
+                }
+                .padding(.top, 40)
 
                 Image("SonOfMan")
                     .resizable()
@@ -28,6 +35,8 @@ struct JobSelectionView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     .padding(.bottom, 40)
+                    .padding(.top, 20)
+                    .opacity(startedFinalDraw ? 0.5 : 1)
                     .onTapGesture {
                         startedFinalDraw = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
@@ -38,7 +47,7 @@ struct JobSelectionView: View {
             }
         }
         .colorScheme(.dark)
-        .frame(width: mainViewWidth, height: 1300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        .frame(width: mainViewWidth, height: 840, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 

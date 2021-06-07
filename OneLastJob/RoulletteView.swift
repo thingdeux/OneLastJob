@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-let mainViewWidth: CGFloat = 740.0
+let mainViewWidth: CGFloat = 1400.0
 
 struct RoulletteView: View {
     @ObservedObject private var viewModel: RoulletteViewModel
@@ -31,8 +31,8 @@ struct RoulletteView: View {
             Text(viewModel.value.text)
                 .foregroundColor(viewModel.textColor)
                 .fontWeight(.thin)
-                .font(.system(size: 40))
-                .frame(width: mainViewWidth)
+                .lineLimit(1)
+                .font(.system(size: 38))
                 .padding([.bottom], shouldShowMap ? 15 : 0)
 
             ZStack {

@@ -12,6 +12,8 @@ import SwiftUI
 class RoulletteViewModel: ObservableObject  {
     @Published private(set) var title: String
     @Published private(set) var textColor = Color.white
+    @Published private(set) var currentlyResolving = false
+    @Published private(set) var value: String = "  - -  "
     private(set) var dataset: [String] = []
     private(set) var resolveTime: Double = 5
     private var animationTimeElapsed: TimeInterval = 0
@@ -33,15 +35,16 @@ class RoulletteViewModel: ObservableObject  {
         self.animationTimeElapsed = 0
         self.textColor = Color.white
         let animationSpeed: TimeInterval = 0.10
+        currentlyResolving = true
 
         animationTimer =
             Timer.publish(every: animationSpeed, on: .main, in: .common)
             .autoconnect()
             .sink() { [weak self]_ in
                 guard let self = self else { return }
-                guard self.animationTimeElapsed < self.resolveTime else {
-                    print("IT'S A WRAP!!")
-                    self.textColor = Color.red
+                guard self.animationTimeElapsed < self.resolveTime else {                    
+                    self.textColor = Color.green
+                    self.currentlyResolving = false
                     self.animationTimer?.cancel()
                     return
                 }
@@ -50,13 +53,12 @@ class RoulletteViewModel: ObservableObject  {
 
                 // I want each change to linger a bit
                 withAnimation(.easeOut(duration: animationSpeed - 0.25)) {
-                    self.title = "     "
+                    self.value = "     "
                 }
 
                 withAnimation(.easeIn(duration: animationSpeed - 0.5)) {
-                    self.title = self.dataset.randomElement() ?? ""
+                    self.value = self.dataset.randomElement() ?? ""
                 }
-                print(self.animationTimeElapsed)
             }
     }
 }
